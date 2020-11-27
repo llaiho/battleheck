@@ -1,5 +1,6 @@
 import { User } from "./User";
 import { Game } from "./Game";
+import { Skill } from "./Skill";
 // import { v4 } from "uuid";
 
 
@@ -37,6 +38,10 @@ export {
 }
 
 
+
+
+
+
 export interface Character {
 
     characterID: string;
@@ -45,7 +50,8 @@ export interface Character {
     characterAlias?: [string];
     characterInGame: Game["gameID"];
 
-    // attributes
+    //      attributes 
+    // !! number is XP, not rank !!
 
     
     str: number;    // strenght
@@ -60,52 +66,25 @@ export interface Character {
 
     // skills
 
-//    skillAcrobaticsFreeFall_TNC: [number, SkillComplexcity, SkillTraining];     // Target Number / skill Compexcity (Simple/Complex)(Basic/Advanced)
-    skillAcrobatics_TNC: [SkillComplexcity.Simple, SkillTraining.Basic];
-    skillAcrobatics_LinkedAttribute: CharacterAttributes.RFL;
-    skillAcrobaticsFreeFall_XP: number;
-    skillAcrobaticsFreeFall_Specialization: string;
-
-//    skillAcrobaticsGymnastics_TNC: [number, SkillComplexcity, SkillTraining];
-    skillAcrobaticsGymnastics_XP: number;
-    skillAcrobaticsGymnastics_Specialization: string;
-
-    skillActing_TNC: [SkillComplexcity.Complex, SkillTraining.Basic];
-    skillActing_LinkedAttribute: CharacterAttributes.CHA;
-    skillActing_XP: number;
-    skillActing_Specialization: string;
-
-    skillAdministration_TNC: [SkillComplexcity, SkillTraining];  
-    skillAdministration_XP: number;
-    skillAdministration_Specialization: string;
-
-    skillAppraisal_TNC: [SkillComplexcity, SkillTraining];
-    skillAppraisal_XP: number;
-    skillAppraisal_Specialization: string;
-
-    skillArchery_TNC: [SkillComplexcity, SkillTraining];
-    skillArchery_XP: number;
-    skillArchery_Specialization: string;
-
-    skillArt: [SubSkill];
-    skillTiers: boolean;
-
-    computersTNC: [number, string, string];
-
-
-
-    drivingTNC: [number, string, string];
-    drivingGroundTNC_XP: number;
-}
-
-
-export interface SubSkill {
-
-//    skillNameMain: string;
-    skillNameSub: string;
-    skillTNC: [number, SkillComplexcity, SkillTraining];
-    skillXP: number;
+    skillList: [Skill];
 
 }
 
 
+export function getIndexFromValueArray(num: number, list: number[]): number {
+
+    for(let i = 0; i < list.length ; i++ ) {
+        if(list[i] > num) {
+            return i - 1;
+        }
+    }
+    return ( list.length - 1 );
+}
+
+export function getSkillRank(xp: number): number {
+    return getIndexFromValueArray(xp, [20, 30, 50, 80, 120, 170, 230, 300, 380, 470, 570]);
+}
+
+export function getAttributeRank(xp: number): number {
+    return Math.floor((xp / 100));
+}

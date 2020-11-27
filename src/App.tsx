@@ -2,7 +2,13 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Button } from "@material-ui/core";
-import Rootview from './views/Rootview';
+import { MyForm } from "./views/testview";
+import { Skill } from './interfaces/Skill';
+// import { MyForm } from "./views/benForm";
+
+interface Props {
+  skillList: Skill[];
+}
 
 function App() {
   return (
@@ -26,9 +32,16 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    <Rootview />
+
+
+
+    <div style={{ textAlign: "center" }}><MyForm onSubmit={() => {}}/></div>
+
+  //  <div><Rootview/></div>
+
+  //  <Rootview />
     
   );
 }
 
-export default App;
+ export default App;
