@@ -1,9 +1,9 @@
 import React from "react";
-import { Skill, CharacterSkill } from "../interfaces/Skill";
+import { Skill, CharacterSkill, CharacterSkillView } from "../interfaces/Skill";
 import { getSkillRank } from "../interfaces/Character";
 
 
-export const SkillShow = (skill: CharacterSkill) => {
+export const SkillShow = (skill: CharacterSkillView) => {
     return (
         <div>
             {skill.skillPrimaryName}
