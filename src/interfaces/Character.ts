@@ -1,6 +1,6 @@
 import { User } from "./User";
 import { Game } from "./Game";
-import { Skill } from "./Skill";
+import { Skill, CharacterSkill } from "./Skill";
 // import { v4 } from "uuid";
 
 
@@ -45,10 +45,10 @@ export {
 export interface Character {
 
     characterID: string;
-    characterName: string;
+//    characterName: string;
     characterNick?: string;
     characterAlias?: [string];
-    characterInGame: Game["gameID"];
+//    characterInGame: Game["gameID"];
 
     //      attributes 
     // !! number is XP, not rank !!
@@ -66,7 +66,7 @@ export interface Character {
 
     // skills
 
-    skillList: [Skill];
+    skillList: CharacterSkill[];
 
 }
 

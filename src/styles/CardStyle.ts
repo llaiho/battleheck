@@ -4,7 +4,7 @@ import { makeStyles, createStyles, Theme } from "@material-ui/core";
 
 
 
-const useCardStyles = makeStyles((theme: Theme) => createStyles({
+export const useCardStyles = makeStyles((theme: Theme) => createStyles({
     card: {
         padding: "0.5rem",
         "& > h2": {

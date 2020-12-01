@@ -22,3 +22,5 @@ export const SkillEdit = (skill: Skill) => {
 export const SkillListShow = () => {
     
 }
+
+
